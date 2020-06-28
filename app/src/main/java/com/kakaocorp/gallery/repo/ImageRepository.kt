@@ -10,6 +10,11 @@ import com.kakaocorp.gallery.model.RepoResponse
 object ImageRepository {
     private val providers = arrayOf(GettyImageProvider)
     suspend fun requestImages(src: ImageSource): RepoResponse<List<Image>> {
-        return providers.find { it.canHandleSource(src) }?.handleSource(src) ?: RepoResponse<List<Image>>(null, false)
+        return try {
+            providers.find { it.canHandleSource(src) }?.handleSource(src)
+                ?: RepoResponse<List<Image>>(null, false)
+        } catch (e: Exception) {
+            RepoResponse<List<Image>>(null, false)
+        }
     }
 }

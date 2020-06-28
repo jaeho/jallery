@@ -12,5 +12,6 @@ sealed class MainEvent : BoxEvent {
     data class RequestGettyImagesHtml(val source: ImageSource) : MainEvent()
     data class OnImagesFetched(val images: List<Image>) : MainEvent()
     object OnError : MainEvent()
+    data class Retry(val source: ImageSource): MainEvent()
 
 }

@@ -6,7 +6,6 @@ import com.kakaocorp.gallery.App
 import com.kakaocorp.gallery.R
 import com.kakaocorp.gallery.di.ActivityModule
 import com.kakaocorp.gallery.di.DaggerActivityComponent
-import com.kakaocorp.gallery.model.GettyImagesGallery
 import com.mrt.box.android.BoxActivity
 import com.mrt.box.android.BoxRenderer
 import com.mrt.box.android.BoxViewInitializer
@@ -26,7 +25,7 @@ class MainScreen : BoxActivity<MainState, MainEvent, MainSideEffect>() {
     override val renderer: BoxRenderer<MainState, MainEvent>?
         get() = MainRenderer
     override val viewInitializer: BoxViewInitializer<MainState, MainEvent>?
-        get() = null
+        get() = MainInitView
 
     override val vm: BoxVm<MainState, MainEvent, MainSideEffect>? by lazy {
         viewModelProvider.get(MainVm::class.java)
@@ -39,10 +38,5 @@ class MainScreen : BoxActivity<MainState, MainEvent, MainSideEffect>() {
             .activityModule(ActivityModule(this))
             .build()
             .inject(this)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        vm?.intent(MainEvent.RequestGettyImagesHtml(GettyImagesGallery("sasha")))
     }
 }

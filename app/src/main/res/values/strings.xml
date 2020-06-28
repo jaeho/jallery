@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">KakaoGallery</string>
+    <string name="app_name">Sasha</string>
+    <string name="fail_to_fetch">데이터 로딩에 실패했습니다.</string>
+    <string name="retry">다시 시도</string>
 </resources>

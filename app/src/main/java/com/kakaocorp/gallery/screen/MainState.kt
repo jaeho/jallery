@@ -1,6 +1,7 @@
 package com.kakaocorp.gallery.screen
 
 import com.kakaocorp.gallery.model.Image
+import com.kakaocorp.gallery.model.ImageSource
 import com.mrt.box.core.BoxState
 
 /**
@@ -9,5 +10,6 @@ import com.mrt.box.core.BoxState
 data class MainState(
     val onProgress: Boolean = false,
     val onError: Boolean = false,
+    val source: ImageSource? = null,
     val images: List<Image>? = null
 ) : BoxState

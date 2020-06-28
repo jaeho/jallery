@@ -20,5 +20,8 @@ class App : Application() {
             .build().apply {
                 inject(this@App)
             }
+        when(BuildConfig.DEBUG) {
+            true -> Box.enableLog { println(it) }
+        }
     }
 }

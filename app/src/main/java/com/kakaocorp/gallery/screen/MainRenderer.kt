@@ -14,9 +14,10 @@ object MainRenderer : BoxRenderer<MainState, MainEvent> {
         val binding = v.binding<ScreenMainBinding>()
         binding.onProgress = s.onProgress
         binding.onError = s.onError
+        binding.source = s.source
 
-        s.images?.let {
-            binding.nasca.loadImages(it.map { it.url })
+        s.images?.let { images ->
+            binding.nasca.loadImages(images.map { image -> image.url })
         }
     }
 }
