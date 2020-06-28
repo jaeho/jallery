@@ -8,7 +8,7 @@ import com.kakaocorp.gallery.model.RepoResponse
  * Created by jaehochoe on 2020/06/27.
  */
 object ImageRepository {
-    private val providers = arrayOf(GettyImageProvider)
+    private val providers = arrayOf<ImageProvider>(GettyImageProvider)
     suspend fun requestImages(src: ImageSource): RepoResponse<List<Image>> {
         return try {
             providers.find { it.canHandleSource(src) }?.handleSource(src)

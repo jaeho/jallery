@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -26,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?android:colorBackground"
+        android:animateLayoutChanges="true"
         android:fitsSystemWindows="true">
 
         <com.mrt.nasca.NascaView
@@ -37,7 +39,17 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:background="?android:colorBackground"
-            goneUnless="@{!onProgress}" />
+            goneUnless="@{!onError &amp;&amp; !onProgress}"/>
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/collections"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            goneUnless="@{!onProgress}"
+            android:alpha="0.7" />
 
         <ProgressBar
             android:id="@+id/progress"
@@ -48,7 +60,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            goneUnless="@{onProgress}" />
+            goneUnless="@{onProgress}"
+            tools:visibility="gone" />
 
         <Button
             android:id="@+id/retry"
@@ -60,7 +73,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/retry"
             android:onClick='@{() -> vm.intent("com.kakaocorp.gallery.screen.MainEvent$Retry", source)}'
-            goneUnless="@{onError}" />
+            goneUnless="@{onError}"
+            tools:visibility="gone" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -70,7 +84,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="8dp"
-            goneUnless="@{onError}" />
+            goneUnless="@{onError}"
+            tools:visibility="gone" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

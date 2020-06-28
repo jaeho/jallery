@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="collections">
+        <item>sasha</item>
+        <item>bert-hardy</item>
+        <item>christopher-simon-skyes</item>
+        <item>terry-fincher</item>
+        <item>celebrities</item>
+        <item>reg-lancaster</item>
+        <item>roaring-26-jazz-age-london</item>
+        <item>herbert-ponting</item>
+        <item>jaehochoe</item>
+    </string-array>
+</resources>

@@ -1,9 +1,6 @@
 package com.kakaocorp.gallery
 
 import android.app.Application
-import com.kakaocorp.gallery.di.AppComponent
-import com.kakaocorp.gallery.di.AppModule
-import com.kakaocorp.gallery.di.DaggerAppComponent
 import com.mrt.box.core.Box
 
 /**
@@ -11,16 +8,9 @@ import com.mrt.box.core.Box
  */
 class App : Application() {
 
-    lateinit var appComponent: AppComponent
-
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerAppComponent.builder()
-            .appModule(AppModule(this))
-            .build().apply {
-                inject(this@App)
-            }
-        when(BuildConfig.DEBUG) {
+        when (BuildConfig.DEBUG) {
             true -> Box.enableLog { println(it) }
         }
     }

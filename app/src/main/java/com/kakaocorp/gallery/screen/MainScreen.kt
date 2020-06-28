@@ -25,7 +25,7 @@ class MainScreen : BoxActivity<MainState, MainEvent, MainSideEffect>() {
     override val renderer: BoxRenderer<MainState, MainEvent>?
         get() = MainRenderer
     override val viewInitializer: BoxViewInitializer<MainState, MainEvent>?
-        get() = MainInitView
+        get() = MainInitView()
 
     override val vm: BoxVm<MainState, MainEvent, MainSideEffect>? by lazy {
         viewModelProvider.get(MainVm::class.java)
@@ -34,7 +34,6 @@ class MainScreen : BoxActivity<MainState, MainEvent, MainSideEffect>() {
     override fun preOnCreate(savedInstanceState: Bundle?) {
         super.preOnCreate(savedInstanceState)
         DaggerActivityComponent.builder()
-            .appComponent((application as App).appComponent)
             .activityModule(ActivityModule(this))
             .build()
             .inject(this)

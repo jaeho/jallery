@@ -41,7 +41,7 @@ fun MainVm.onCreatedBlueprint(): BoxBlueprint<MainState, MainEvent, MainSideEffe
         }
 
         on<MainEvent.Retry> {
-            to(copy(onError = false, onProgress = true), MainSideEffect.RequestGettyImagesHtml(it.source))
+            to(copy(onError = false, onProgress = true, images = null), MainSideEffect.RequestGettyImagesHtml(it.source))
         }
     }
 }

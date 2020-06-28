@@ -16,8 +16,9 @@ object MainRenderer : BoxRenderer<MainState, MainEvent> {
         binding.onError = s.onError
         binding.source = s.source
 
-        s.images?.let { images ->
-            binding.nasca.loadImages(images.map { image -> image.url })
+        when (s.images != null) {
+            true -> binding.nasca.loadImages(s.images.map { image -> image.url })
+            else -> binding.nasca.clear()
         }
     }
 }
