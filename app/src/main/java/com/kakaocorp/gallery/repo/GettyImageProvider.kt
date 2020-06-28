@@ -22,7 +22,8 @@ object GettyImageProvider : ImageProvider {
                 val list = mutableListOf<Image>()
                 doc.getElementsByTag("img").forEach { element ->
                     element.attr("data-src")?.let { url ->
-                        list.add(Image(url))
+                        if (url.isNullOrBlank().not())
+                            list.add(Image(url))
                     }
                 }
                 RepoResponse(list, true)

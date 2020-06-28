@@ -25,7 +25,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?android:colorBackground">
+        android:background="?android:colorBackground"
+        android:fitsSystemWindows="true">
 
         <com.mrt.nasca.NascaView
             android:id="@+id/nasca"
@@ -35,6 +36,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:background="?android:colorBackground"
             goneUnless="@{!onProgress}" />
 
         <ProgressBar
