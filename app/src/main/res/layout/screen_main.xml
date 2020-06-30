@@ -15,7 +15,7 @@
 
         <variable
             name="source"
-            type="com.kakaocorp.gallery.model.ImageSource" />
+            type="com.jaehochoe.gallery.model.ImageSource" />
 
         <variable
             name="vm"
@@ -72,7 +72,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/retry"
-            android:onClick='@{() -> vm.intent("com.kakaocorp.gallery.screen.MainEvent$Retry", source)}'
+            android:onClick='@{() -> vm.intent("com.jaehochoe.gallery.screen.MainEvent$Retry", source)}'
             goneUnless="@{onError}"
             tools:visibility="gone" />
 

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kakaocorp.gallery">
+    package="com.jaehochoe.gallery">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -10,10 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".App">
+        android:name="com.jaehochoe.gallery.App">
 
         <activity
-            android:name=".screen.MainScreen"
+            android:name="com.jaehochoe.gallery.screen.MainScreen"
             android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
