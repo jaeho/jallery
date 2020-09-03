@@ -25,10 +25,10 @@ class MainVm : BoxVm<MainState, MainEvent, MainSideEffect>() {
 
 fun MainVm.onCreatedBlueprint(): BoxBlueprint<MainState, MainEvent, MainSideEffect> {
     return bluePrint(MainState()) {
-        on<MainEvent.RequestGettyImagesHtml> {
-            to(copy(onProgress = true, onError = false, source = it.source), MainSideEffect.RequestGettyImagesHtml(it.source))
+        on<MainEvent.RequestImages> {
+            to(copy(onProgress = true, onError = false, source = it.source), MainSideEffect.RequestImages(it.source))
         }
-        io<MainSideEffect.RequestGettyImagesHtml> {
+        io<MainSideEffect.RequestImages> {
             requestGettyImageHtmlAsync(it.sideEffect.source)
         }
 
@@ -41,7 +41,7 @@ fun MainVm.onCreatedBlueprint(): BoxBlueprint<MainState, MainEvent, MainSideEffe
         }
 
         on<MainEvent.Retry> {
-            to(copy(onError = false, onProgress = true, images = null), MainSideEffect.RequestGettyImagesHtml(it.source))
+            to(copy(onError = false, onProgress = true, images = null), MainSideEffect.RequestImages(it.source))
         }
     }
 }

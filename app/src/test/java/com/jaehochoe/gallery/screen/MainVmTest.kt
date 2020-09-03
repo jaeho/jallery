@@ -28,14 +28,14 @@ class MainVmTest : VmTest<MainState, MainEvent, MainSideEffect>() {
     @Test
     fun `intent RequestGettyImagesHtml`() {
         val src = mock(GettyImagesGallery::class.java)
-        val output = vm.testIntent(MainEvent.RequestGettyImagesHtml(src))
+        val output = vm.testIntent(MainEvent.RequestImages(src))
         output.valid().to.apply {
             assertFalse(onError)
             assertTrue(onProgress)
             assertEquals(source, src)
         }
         output.valid().sideEffect.apply {
-            assertTrue(this is MainSideEffect.RequestGettyImagesHtml)
+            assertTrue(this is MainSideEffect.RequestImages)
         }
         runBlocking {
             doIoSideEffect(output.valid())
@@ -72,7 +72,7 @@ class MainVmTest : VmTest<MainState, MainEvent, MainSideEffect>() {
             assertNull(images)
         }
         output.valid().sideEffect.apply {
-            assertTrue(this is MainSideEffect.RequestGettyImagesHtml)
+            assertTrue(this is MainSideEffect.RequestImages)
         }
         runBlocking {
             doIoSideEffect(output.valid())

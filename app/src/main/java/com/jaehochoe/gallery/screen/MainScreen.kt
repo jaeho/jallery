@@ -21,9 +21,9 @@ class MainScreen : BoxActivity<MainState, MainEvent, MainSideEffect>() {
 
     override val layout: Int
         get() = R.layout.screen_main
-    override val renderer: BoxRenderer<MainState, MainEvent>?
+    override val renderer: BoxRenderer?
         get() = MainRenderer
-    override val viewInitializer: BoxViewInitializer<MainState, MainEvent>?
+    override val viewInitializer: BoxViewInitializer?
         get() = MainInitView()
 
     override val vm: BoxVm<MainState, MainEvent, MainSideEffect>? by lazy {

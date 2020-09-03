@@ -14,12 +14,9 @@ import com.mrt.box.core.Vm
 /**
  * Created by jaehochoe on 2020/06/28.
  */
-class MainInitView : BoxViewInitializer<MainState, MainEvent> {
+class MainInitView : BoxViewInitializer {
 
-    override fun <B : ViewDataBinding, VM : Vm> bindingVm(b: B?, vm: VM) {
-        b?.setVariable(BR.vm, vm)
-    }
-    override fun initializeView(v: BoxAndroidView<MainState, MainEvent>, vm: Vm?) {
+    override fun initializeView(v: BoxAndroidView, vm: Vm?) {
         val binding = v.binding<ScreenMainBinding>()
         binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -27,7 +24,7 @@ class MainInitView : BoxViewInitializer<MainState, MainEvent> {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 try {
                     v.activity().resources.getStringArray(R.array.collections)[position].let {
-                        vm?.intent(MainEvent.RequestGettyImagesHtml(GettyImagesGallery(it)))
+                        vm?.intent(MainEvent.RequestImages(GettyImagesGallery(it)))
                     }
                 } catch (e: Exception) {
                     vm?.intent(MainEvent.OnError)

@@ -3,15 +3,17 @@ package com.jaehochoe.gallery.screen
 import com.jaehochoe.gallery.databinding.ScreenMainBinding
 import com.mrt.box.android.BoxAndroidView
 import com.mrt.box.android.BoxRenderer
+import com.mrt.box.core.BoxState
 import com.mrt.box.core.Vm
 
 /**
  * Created by jaehochoe on 2020/06/27.
  */
-object MainRenderer : BoxRenderer<MainState, MainEvent> {
+object MainRenderer : BoxRenderer {
 
-    override fun render(v: BoxAndroidView<MainState, MainEvent>, s: MainState, vm: Vm?) {
+    override fun renderView(v: BoxAndroidView, s: BoxState, vm: Vm?) {
         val binding = v.binding<ScreenMainBinding>()
+        s as MainState
         binding.onProgress = s.onProgress
         binding.onError = s.onError
         binding.source = s.source
@@ -21,4 +23,5 @@ object MainRenderer : BoxRenderer<MainState, MainEvent> {
             else -> binding.nasca.clear()
         }
     }
+
 }

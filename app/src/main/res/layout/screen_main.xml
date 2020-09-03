@@ -48,7 +48,6 @@
             android:entries="@array/collections"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            goneUnless="@{!onProgress}"
             android:alpha="0.7" />
 
         <ProgressBar

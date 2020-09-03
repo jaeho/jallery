@@ -37,7 +37,7 @@ android {
 
 ext {
     coroutinesVersion = "1.3.1"
-    boxVersion = "1.0.4.2"
+    boxVersion = "1.1.1.2"
     nascaVersion = "1.0.6"
     daggerVersion = "2.20"
     jsoupVersion = "1.13.1"
@@ -58,7 +58,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
 
     implementation "com.github.jaeho:nasca:$nascaVersion"
-    implementation "com.github.jaeho:box:$boxVersion"
+    implementation "com.github.myrealtrip:box:$boxVersion"
     implementation "com.github.jaeho:juri:$juriVersion"
     implementation "org.jsoup:jsoup:$jsoupVersion"
 
@@ -73,5 +73,4 @@ dependencies {
     testImplementation "org.mockito:mockito-inline:2.25.0"
     testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.2'
     testImplementation "androidx.arch.core:core-testing:2.0.0"
-
 }

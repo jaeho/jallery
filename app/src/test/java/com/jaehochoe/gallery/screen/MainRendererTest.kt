@@ -15,7 +15,7 @@ import org.mockito.Mockito.*
  */
 class MainRendererTest {
 
-    private val v = mock(BoxAndroidView::class.java) as BoxAndroidView<MainState, MainEvent>
+    private val v = mock(BoxAndroidView::class.java)
     private val binding = mock(ScreenMainBinding::class.java)
     private val vm = mock(Vm::class.java)
 
@@ -30,14 +30,14 @@ class MainRendererTest {
     @Test
     fun `render progress`() {
         val s = MainState(onProgress = true)
-        MainRenderer.render(v, s, vm)
+        MainRenderer.renderView(v, s, vm)
         verify(binding).onProgress = true
     }
 
     @Test
     fun `render error`() {
         val s = MainState(onError = true)
-        MainRenderer.render(v, s, vm)
+        MainRenderer.renderView(v, s, vm)
         verify(binding).onError = true
     }
 
@@ -45,7 +45,7 @@ class MainRendererTest {
     fun `render source`() {
         val source = mock(ImageSource::class.java)
         val s = MainState(source = source)
-        MainRenderer.render(v, s, vm)
+        MainRenderer.renderView(v, s, vm)
         verify(binding).source = source
     }
 
@@ -53,14 +53,14 @@ class MainRendererTest {
     fun `render images`() {
         val images = listOf(Image("mockUrl"))
         val s = MainState(images = images)
-        MainRenderer.render(v, s, vm)
+        MainRenderer.renderView(v, s, vm)
         verify(binding.nasca).loadImages(images.map { image -> image.url })
     }
 
     @Test
     fun `render clear images`() {
         val s = MainState(images = null)
-        MainRenderer.render(v, s, vm)
+        MainRenderer.renderView(v, s, vm)
         verify(binding.nasca).clear()
     }
 
